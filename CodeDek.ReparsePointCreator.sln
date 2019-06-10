@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29001.49
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReparsePointCreator", "src\ReparsePointCreator\ReparsePointCreator.csproj", "{862F6301-3A67-481D-AA6C-F5F43BA5DCE8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReparsePointCreator.Core", "src\ReparsePointCreator.Core\ReparsePointCreator.Core.csproj", "{E13DE563-80B0-431A-A5CF-EAC231E28401}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReparsePointCreator.Core.Tests", "src\ReparsePointCreator.Core.Tests\ReparsePointCreator.Core.Tests.csproj", "{F3EFF173-69F6-45E2-97B0-CD280CD056DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{862F6301-3A67-481D-AA6C-F5F43BA5DCE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{862F6301-3A67-481D-AA6C-F5F43BA5DCE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{862F6301-3A67-481D-AA6C-F5F43BA5DCE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E13DE563-80B0-431A-A5CF-EAC231E28401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E13DE563-80B0-431A-A5CF-EAC231E28401}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E13DE563-80B0-431A-A5CF-EAC231E28401}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E13DE563-80B0-431A-A5CF-EAC231E28401}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3EFF173-69F6-45E2-97B0-CD280CD056DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3EFF173-69F6-45E2-97B0-CD280CD056DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3EFF173-69F6-45E2-97B0-CD280CD056DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3EFF173-69F6-45E2-97B0-CD280CD056DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

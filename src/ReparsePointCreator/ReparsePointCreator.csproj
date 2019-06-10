@@ -94,5 +94,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ReparsePointCreator.Core\ReparsePointCreator.Core.csproj">
+      <Project>{e13de563-80b0-431a-a5cf-eac231e28401}</Project>
+      <Name>ReparsePointCreator.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
