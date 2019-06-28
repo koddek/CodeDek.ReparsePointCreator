@@ -5,8 +5,205 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ReparsePointCreator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="{Binding Title}"
+        MinHeight="{Binding MinHeight}"
+        MinWidth="{Binding MinWidth}"
+        Height="600"
+        Width="800"
+        FontSize="14">
+    <Window.DataContext>
+        <local:MainViewModel x:Name="mvm" />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin"
+                    Value="0,5" />
+            <Setter Property="Padding"
+                    Value="5" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Height"
+                    Value="32" />
+            <Setter Property="Margin"
+                    Value="0,5" />
+            <Setter Property="Padding"
+                    Value="5" />
+        </Style>
+
+        <Style TargetType="GroupBox">
+            <Setter Property="Margin"
+                    Value="0,5" />
+            <Setter Property="Padding"
+                    Value="5" />
+        </Style>
+    </Window.Resources>
+
+    <Grid Tag="Body">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="164" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border Tag="About"
+                DataContext="{Binding AboutViewModel}"
+                Grid.Row="0"
+                Background="Azure">
+
+            <Border.Effect>
+                <DropShadowEffect Direction="0"
+                                  ShadowDepth="2"
+                                  Opacity="0.5" />
+            </Border.Effect>
+            
+            <Grid Margin="13">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0"
+                       Source="{Binding AppIcon}"
+                       Width="128"
+                       Height="128" />
+
+                <StackPanel Grid.Column="1"
+                               HorizontalAlignment="Right" FlowDirection="RightToLeft">
+                    <TextBlock Text="{Binding AppName}"
+                               FontSize="18"/>
+                    <TextBlock Text="{Binding AppVersion}" />
+                    <TextBlock>
+                            <Hyperlink Command="{Binding NavigateHomeUrlCmd}">
+                                Project Home
+                            </Hyperlink>
+                    </TextBlock>
+                    <TextBlock>
+                            <Hyperlink Command="{Binding NavigateLicenseUrlCmd}">
+                                License
+                            </Hyperlink>
+                    </TextBlock>
+                    <TextBlock>
+                            <Hyperlink Command="{Binding NavigateChangelogUrlCmd}">
+                                Change log
+                            </Hyperlink>
+                    </TextBlock>
+                    <TextBlock>
+                            <Hyperlink Command="{Binding NavigateDownloadUrlCmd}">
+                                Download Latest
+                            </Hyperlink>
+                    </TextBlock>
+                    <TextBlock>
+                            <Hyperlink Command="{Binding NavigateIssuesUrlCmd}">
+                                Submit Issues and Requests
+                            </Hyperlink>
+                    </TextBlock>
+
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1"
+              Tag="MainContent"
+              Margin="13,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="13" />
+            </Grid.RowDefinitions>
+            <GroupBox Grid.Row="1"
+                      Header="Select the type of link you want to create:">
+                <StackPanel>
+                    <RadioButton Content="{Binding HardlinkText}"
+                                 IsChecked="{Binding IsHardLinkChecked}" />
+                    <RadioButton Content="{Binding HardlinkText}"
+                                 IsChecked="{Binding IsHardLinkChecked}" />
+                    <RadioButton Content="{Binding HardlinkText}"
+                                 IsChecked="{Binding IsHardLinkChecked}" />
+                    <RadioButton Content="{Binding HardlinkText}"
+                                 IsChecked="{Binding IsHardLinkChecked}" />
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Grid.Row="2"
+                      Header="Select the source folder or file that you want to link to:">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="80" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <TextBox Grid.Column="0"
+                             Grid.Row="0" />
+                    <Button Grid.Column="1"
+                            Grid.Row="0"
+                            Content="Select..." />
+                    <TextBlock Grid.Row="1"
+                               Grid.ColumnSpan="2"
+                               TextAlignment="Center" />
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Row="3"
+                      Header="Select or type in the target path where you want the link to be created:">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="80" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <TextBox Grid.Column="0"
+                             Grid.Row="0" />
+                    <Button Grid.Column="1"
+                            Grid.Row="0"
+                            Content="Select..." />
+                    <CheckBox Grid.Row="1"
+                              Content="Overwrite the target if it exists"
+                              IsChecked="{Binding IsOverwrite}" />
+                </Grid>
+            </GroupBox>
+
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="5" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0"
+                        Content="Reset" />
+                <Button Grid.Column="2"
+                        Content="Create" />
+            </Grid>
+        </Grid>
         
+        <StackPanel Grid.Row="2"
+                    Grid.Column="1"
+                    Orientation="Horizontal" >
+
+            <TextBlock Text="{Binding Status, Mode=TwoWay}"
+                       Foreground="{Binding StatusColor, Mode=TwoWay}" />
+
+            <TextBlock Margin="5,0">
+                    <Hyperlink Command="{Binding GoToUrlCmd}">
+                        <Hyperlink.Inlines>
+                            <Run Text="{Binding Passage, Mode=TwoWay}" />
+                        </Hyperlink.Inlines>
+                    </Hyperlink>
+            </TextBlock>
+        </StackPanel>
     </Grid>
 </Window>
