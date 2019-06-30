@@ -13,13 +13,13 @@ namespace ReparsePointCreator
 {
     public sealed class AboutViewModel
     {
-        public byte[] AppIcon => File.ReadAllBytes(@"D:\.repo\_product\CodeDek.FolderSharer\art\ic_folder_sharer.ico");
-        public string Home => "https://github.com/codedek/CodeDek.FolderSharer";
-        public string Download => "https://github.com/codedek/CodeDek.FolderSharer/releases";
-        public string Issues => "https://github.com/codedek/CodeDek.FolderSharer/issues";
-        public string License => "https://github.com/codedek/CodeDek.FolderSharer/blob/master/LICENSE";
-        public string Changelog => "https://github.com/codedek/CodeDek.FolderSharer/blob/master/CHANGELOG.md";
-        public string AppName => "Folder Sharer";
+        public byte[] AppIcon => File.ReadAllBytes(@"D:\.repo\_product\CodeDek.ReparsePointCreator\art\ic_reparse_point_creator.ico");
+        public string Home => "https://github.com/codedek/codedek.reparsepointcreator";
+        public string Download => "https://github.com/codedek/codedek.reparsepointcreator/releases";
+        public string Issues => "https://github.com/codedek/codedek.reparsepointcreator/issues";
+        public string License => "https://github.com/codedek/codedek.reparsepointcreator/blob/master/LICENSE";
+        public string Changelog => "https://github.com/codedek/codedek.reparsepointcreator/blob/master/CHANGELOG.md";
+        public string AppName => "Reparse Point Creator";
         public string AppVersion => $"v{FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion}";
         public string Copyright => "© 2019 CodeDek. All Rights Reserved";
         public string Developer => "Written by CodeDek";
