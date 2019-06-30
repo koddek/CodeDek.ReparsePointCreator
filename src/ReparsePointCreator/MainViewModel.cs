@@ -7,19 +7,30 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using CodeDek.Lib.FortuneCookie;
 using CodeDek.Lib.Mvvm;
 
 namespace ReparsePointCreator
 {
     public sealed class MainViewModel : ObservableObject
     {
-        private string _status = "Made by CodeDek";
+        private string _status;
         private string _passage;
         private string _passageUrl;
         private Brush _statusColor = Brushes.DarkSeaGreen;
 
-        public CreateReparsePointViewModel CreateReparsePointViewModel => new CreateReparsePointViewModel();
+        public MainViewModel()
+        {
+            var (text, passage, url) = CookieGenerator.GenerateCookie(CookieType.Promises);
+            Status = text;
+            Passage = passage;
+            PassageUrl = url;
+        }
+
+        public CreateReparsePointViewModel CreateReparsePointViewModel => new CreateReparsePointViewModel(this);
         public AboutViewModel AboutViewModel => new AboutViewModel();
+
+        public Cmd GoToUrlCmd => new Cmd(() => Process.Start(PassageUrl));
 
         public string Title => "CodeDek's Reparse Point Creator";
         public int MinHeight => 600;
