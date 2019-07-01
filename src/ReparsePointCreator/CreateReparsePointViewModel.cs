@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using CodeDek.Lib;
 using CodeDek.Lib.Mvvm;
@@ -67,7 +63,11 @@ namespace ReparsePointCreator
             get => _terget;
             set => Set(ref _terget, value, () =>
             {
-                if (Directory.Exists(Target) || File.Exists(Target))
+                if (Source.Equals(Target, StringComparison.OrdinalIgnoreCase))
+                {
+                    TargetMessage = "Warning! The Source and the Target cannot be the same path.";
+                }
+                else if (Directory.Exists(Target) || File.Exists(Target))
                 {
                     TargetExists = true;
                     TargetMessage = "Warning! This is an existing target path. Check overwrite to successfully create this link.";
@@ -197,6 +197,12 @@ namespace ReparsePointCreator
 
         public Cmd ResetFormCmd => new Cmd(() =>
         {
+            Reset();
+            _mainViewModel.Status = "Form was reset.";
+        }, () => Option > 0 || !string.IsNullOrWhiteSpace(Source) || !string.IsNullOrWhiteSpace(Target) || Overwrite);
+
+        private void Reset()
+        {
             IsEmptyOption = true;
             Option = 0;
             Source = "";
@@ -205,21 +211,24 @@ namespace ReparsePointCreator
             SourceMessage = "";
             TargetMessage = "";
             TargetExists = false;
-            _mainViewModel.Status = "Form was reset.";
-        }, () => Option > 0 || !string.IsNullOrWhiteSpace(Source) || !string.IsNullOrWhiteSpace(Target) || Overwrite);
+            _mainViewModel.Passage = "";
+            _mainViewModel.PassageUrl = "";
+        }
 
         public Cmd CreateLinkCmd => new Cmd(() =>
         {
             switch (Option)
             {
                 case 1:
-                    Storage.CreateFileSymbolicLink(Source, Target, Overwrite);
+                    if (Fun.IsAdministrator())
+                        Storage.CreateFileSymbolicLink(Source, Target, Overwrite);
                     break;
                 case 2:
                     Storage.CreateFileHardLink(Source, Target, Overwrite);
                     break;
                 case 3:
-                    Storage.CreateDirectorySymbolicLink(Source, Target, Overwrite);
+                    if (Fun.IsAdministrator())
+                        Storage.CreateDirectorySymbolicLink(Source, Target, Overwrite);
                     break;
                 case 4:
                     Storage.CreateDirectoryJunction(Source, Target, Overwrite);
@@ -240,8 +249,13 @@ namespace ReparsePointCreator
                     return;
             }
             _mainViewModel.Status = "Link creation complete.";
+            Reset();
 
-        }, () => Option > 0 && !string.IsNullOrWhiteSpace(Source) && !string.IsNullOrWhiteSpace(Target) && !TargetExists);
+        }, () => Option > 0
+        && !string.IsNullOrWhiteSpace(Source)
+        && !string.IsNullOrWhiteSpace(Target)
+        && !TargetExists
+        && !Source.Equals(Target, StringComparison.OrdinalIgnoreCase));
 
         public Cmd Option1Cmd => new Cmd(() => Option = 1);
         public Cmd Option2Cmd => new Cmd(() => Option = 2);
