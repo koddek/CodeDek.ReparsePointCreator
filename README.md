@@ -6,7 +6,7 @@ Easily create [Symbolic Links](https://en.wikipedia.org/wiki/NTFS_symbolic_link)
 Scroll down to the [downloads](#downloads) section to get a specific version and to view its [change log](#downloads), or just go to [releases](https://github.com/codedek/CodeDek.FolderSharer/releases) to get the latest.
 
 ![GitHub](https://img.shields.io/github/license/codedek/codedek.reparsepointcreator.svg)
-![GitHub All Releases](https://img.shields.io/github/downloads/codedek/CodeDek.reparsepointcreator/total.svg)
+![GitHub All Releases](https://img.shields.io/github/downloads/codedek/codedek.reparsepointcreator/total.svg)
 ![GitHub release](https://img.shields.io/github/release/codedek/codedek.reparsepointcreator.svg)
 
 ### License & Copyright
