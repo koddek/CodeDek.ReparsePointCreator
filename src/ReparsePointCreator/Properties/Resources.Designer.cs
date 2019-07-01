@@ -59,5 +59,24 @@ namespace ReparsePointCreator.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon ic_reparse_point_creator {
+            get {
+                object obj = ResourceManager.GetObject("ic_reparse_point_creator", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to D:\.repo\_product\CodeDek.ReparsePointCreator\src\ReparsePointCreator\art.
+        /// </summary>
+        internal static string String {
+            get {
+                return ResourceManager.GetString("String", resourceCulture);
+            }
+        }
     }
 }
