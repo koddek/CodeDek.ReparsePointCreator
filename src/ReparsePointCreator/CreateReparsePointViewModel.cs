@@ -248,7 +248,7 @@ namespace ReparsePointCreator
                 default:
                     return;
             }
-            _mainViewModel.Status = "Link creation complete.";
+            _mainViewModel.Status = $"Created {_options[Option]}: {Target}.";
             Reset();
 
         }, () => Option > 0
