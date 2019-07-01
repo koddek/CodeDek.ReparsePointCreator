@@ -7,13 +7,15 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using CodeDek.Lib;
 using CodeDek.Lib.Mvvm;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ReparsePointCreator
 {
     public sealed class AboutViewModel
     {
-        public byte[] AppIcon => File.ReadAllBytes(@"D:\.repo\_product\CodeDek.ReparsePointCreator\art\ic_reparse_point_creator.ico");
+        public byte[] AppIcon => Fun.IconToBytes(Properties.Resources.ic_reparse_point_creator);
         public string Home => "https://github.com/codedek/codedek.reparsepointcreator";
         public string Download => "https://github.com/codedek/codedek.reparsepointcreator/releases";
         public string Issues => "https://github.com/codedek/codedek.reparsepointcreator/issues";
